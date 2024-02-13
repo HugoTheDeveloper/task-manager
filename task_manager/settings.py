@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['webserver', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -42,7 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',
     'task_manager',
+    'task_manager.statuses',
+    'task_manager.labels',
+    'task_manager.tasks',
+    'task_manager.users',
+
 ]
 
 MIDDLEWARE = [
