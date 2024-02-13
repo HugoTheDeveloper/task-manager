@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "task_manager"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "3.10.12"
 Django = "^5.0.2"
 python-dotenv = "^1.0.1"
 dj-database-url = "^2.1.0"
