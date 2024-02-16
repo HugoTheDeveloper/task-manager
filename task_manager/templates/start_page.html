@@ -1,11 +1,12 @@
 {% extends 'basement.html' %}
+{% load django_bootstrap5 i18n static %}
 {% block content %}
 <h1 class="my-4"></h1>
 <div class="card">
   <div class="card-body p-5 bg-light">
-    <div class="display-5 mb-3">Hello there!</div>
-    <p class="lead">Task Manager is an invaluable tool for boosting productivity in today's fast-paced world. It serves as a centralized hub where individuals can efficiently organize, prioritize, and track their tasks and responsibilities. With Task Manager, one can easily break down large projects into manageable steps, set deadlines, and allocate time accordingly. This fosters a sense of clarity and control over one's workload, reducing overwhelm and ensuring tasks are completed in a timely manner. Additionally, Task Manager allows for seamless collaboration, enabling individuals to delegate tasks, share progress updates, and coordinate efforts with team members. By harnessing the power of Task Manager, productive individuals can streamline their workflow, optimize time management, and ultimately achieve their goals with greater efficiency and effectiveness.</p>
-    <p class="lead display-6">Sign up and become more productive already now!</p>
+    <div class="display-5 mb-3">{% trans 'Hello there!' %}</div>
+    <p class="lead">{% trans "Task Manager is an invaluable tool for boosting productivity in today's fast-paced world. It serves as a centralized hub where individuals can efficiently organize, prioritize, and track their tasks and responsibilities. With Task Manager, one can easily break down large projects into manageable steps, set deadlines, and allocate time accordingly. This fosters a sense of clarity and control over one's workload, reducing overwhelm and ensuring tasks are completed in a timely manner. Additionally, Task Manager allows for seamless collaboration, enabling individuals to delegate tasks, share progress updates, and coordinate efforts with team members. By harnessing the power of Task Manager, productive individuals can streamline their workflow, optimize time management, and ultimately achieve their goals with greater efficiency and effectiveness." %}</p>
+    <p class="lead display-6">{% trans "Sign up and become more productive already now!" %}</p>
   </div>
 </div>
 {% endblock %}

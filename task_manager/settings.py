@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 import dj_database_url
 from dotenv import load_dotenv
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -119,7 +121,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),  # Каталог с переводами по умолчанию
+]
+
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = [('ru', _('Russian')), ('en', _('English'))]
 
 TIME_ZONE = 'UTC'
 
