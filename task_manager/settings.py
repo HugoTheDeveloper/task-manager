@@ -31,9 +31,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['webserver', 'localhost', '127.0.0.1']
+ENVIRONMENT = os.getenv('ENVIRONMENT')
+
+ALLOWED_HOSTS = ['webserver', 'localhost', '127.0.0.1',
+                 '3.75.158.163',
+                '3.125.183.140',
+                '35.157.117.28']
 
 
 # Application definition
@@ -88,6 +93,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
 
 DATABASES = {
     'default': dj_database_url.config(os.getenv('DATABASE_URL'))
