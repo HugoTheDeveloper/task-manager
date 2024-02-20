@@ -15,7 +15,7 @@ migrate:
 	$(MANAGE) migrate
 
 prod:
-	poetry run gunicorn 127.0.0.1:8000 task_manager.wsgi:application
+	poetry run gunicorn task_manager.wsgi:application
 
 install:
 	poetry install
