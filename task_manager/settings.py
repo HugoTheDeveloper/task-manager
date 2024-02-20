@@ -94,14 +94,15 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+LOCAL_DB = {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': BASE_DIR / 'db.sqlite3',
+}
 
 DATABASES = {
-    'default': dj_database_url.config(os.getenv('DATABASE_URL'))
-
-    #     {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', LOCAL_DB),
+        conn_max_age=600)
 }
 
 
