@@ -1,13 +1,24 @@
+MANAGE := poetry run python manage.py
+
 dev:
-	python3 manage.py runserver
+	$(MANAGE) runserver
+
+shell:
+	$(MANAGE) shell
+
+setup_migration:
+	$(MANAGE) makemigrations
+
+migrate:
+	$(MANAGE) migrate
+
+prod:
+	poetry run gunicorn 127.0.0.1:8000 task_manager.wsgi:application
 
 install:
 	poetry install
 
-init_postgres:
-	psql -a -d $(DATABASE_URL) -f database.sql
-
-build: install init_postgres
+build: install
 
 lint:
 	poetry run flake8 page_analyzer
