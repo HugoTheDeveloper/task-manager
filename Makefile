@@ -1,5 +1,7 @@
 MANAGE := poetry run python manage.py
 
+.PHONY: prod
+
 dev:
 	$(MANAGE) runserver
 
