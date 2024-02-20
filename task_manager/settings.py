@@ -36,7 +36,7 @@ DEBUG = os.getenv('DEBUG')
 ENVIRONMENT = os.getenv('ENVIRONMENT')
 
 ALLOWED_HOSTS = ['webserver', 'localhost', '127.0.0.1',
-                 'https://task-manager-s0wy.onrender.com']
+                 'task-manager-s0wy.onrender.com']
 
 
 # Application definition
