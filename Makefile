@@ -1,6 +1,4 @@
 MANAGE := poetry run python manage.py
-HOST ?= 127.0.0.1
-PORT ?= 8000
 
 .PHONY: prod
 
@@ -17,7 +15,7 @@ migrate:
 	$(MANAGE) migrate
 
 prod:
-	poetry run gunicorn -b $(HOST):$(PORT) task_manager.wsgi:application
+	poetry run gunicorn -w 4 task_manager.wsgi:application
 
 install:
 	poetry install
