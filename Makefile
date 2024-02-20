@@ -1,6 +1,6 @@
 MANAGE := poetry run python manage.py
-HOST := 127.0.0.1
-PORT := 8000
+HOST ?= 127.0.0.1
+PORT ?= 8000
 
 .PHONY: prod
 
