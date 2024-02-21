@@ -33,11 +33,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ENVIRONMENT = os.getenv('ENVIRONMENT')
+ALLOWED_HOSTS = ['webserver', 'localhost', '127.0.0.1']
 
-ALLOWED_HOSTS = ['webserver', 'localhost', '127.0.0.1',
-                 'task-manager-s0wy.onrender.com']
-
+RENDER_EXTERNAL_HOSTNAME = os.getenv('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -99,10 +99,13 @@ LOCAL_DB = {
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', LOCAL_DB),
+        default=os.getenv('DATABASE_URL'),
         conn_max_age=600)
 }
 
+DB_ENGINE = os.getenv('DB_ENGINE')
+if DB_ENGINE == 'SQLite':
+    DATABASES['default'] = LOCAL_DB
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

@@ -14,13 +14,16 @@ setup_migration:
 migrate:
 	$(MANAGE) migrate
 
+collect_static:
+	$(MANAGE) collectstatic --no-input
+
 prod:
 	poetry run gunicorn task_manager.wsgi:application
 
 install:
 	poetry install
 
-build: install
+build: install collect_static migrate
 
 lint:
 	poetry run flake8 page_analyzer
