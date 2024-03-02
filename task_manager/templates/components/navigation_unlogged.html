@@ -1,0 +1,12 @@
+{% load django_bootstrap5 i18n static %}
+<ul class="nav nav-pills">
+    <li class="nav-item"><a href="{% url 'users_index' %}" class="nav-link">{% trans 'Users' %}</a></li>
+</ul>
+<div class="col-md-3 d-flex text-end ">
+    <form class="form" action="{% url 'login' %}">
+        <button type="submit" class="btn btn-outline-primary me-2">{% trans 'Sign in' %}</button>
+    </form>
+        <form class='form' action="{% url 'users_create' %}">
+            <button type="submit" class="btn btn-primary btn-block">{% trans 'Sign up' %}</button>
+        </form>
+</div>

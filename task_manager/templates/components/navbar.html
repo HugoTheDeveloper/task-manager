@@ -1,0 +1,26 @@
+{% load django_bootstrap5 i18n static %}
+<ul class="nav nav-pills">
+    <li class="nav-item"><a href="{% url 'users_index' %}" class="nav-link">{% trans 'Users' %}</a></li>
+    {% with user.is_authenticated as authenticated %}
+    <li class="nav-item"><a href="#" class="nav-link">{% trans 'Statuses' %}</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">{% trans 'Labels' %}</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">{% trans 'Tasks' %}</a></li>
+    <li> Authenticated = {{ authenticated }}</li>
+</ul>
+
+<div class="col-md-3 d-flex text-end ">
+    <form class="form" action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-primary me-2">{% trans 'Sign out' %}</button>
+    </form>
+    <form class="form" action="{% url 'login' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-primary me-2">{% trans 'Sign in' %}</button>
+    </form>
+        <form class='form' action="{% url 'users_create' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary btn-block">{% trans 'Sign up' %}</button>
+        </form>
+</div>
+
+{% endwith %}

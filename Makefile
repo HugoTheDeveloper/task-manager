@@ -1,12 +1,12 @@
 MANAGE := poetry run python manage.py
 
-.PHONY: prod
+.PHONY: prod shell
 
 dev:
 	$(MANAGE) runserver
 
 shell:
-	$(MANAGE) shell
+	$(MANAGE) shell_plus --ipython
 
 setup_migration:
 	$(MANAGE) makemigrations

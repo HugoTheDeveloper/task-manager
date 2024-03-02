@@ -1,0 +1,15 @@
+{% extends 'basement.html' %}
+{% load django_bootstrap5 i18n static %}
+
+{% block content%}
+
+
+<h1 class="my-4">{% trans 'Delete user' %}</h1>
+{% trans 'Are you sure you want to delete' as offer%}
+<p>{{offer}} {{ user.first_name }} {{ user.last_name }}?</p>
+<form action="{% url 'users_delete' user.pk%}" method="post">
+    {% csrf_token %}
+    {% translate 'Yes, delete' as button_name %}
+    {% bootstrap_button button_type="submit" content=button_name %}
+</form>
+{% endblock %}

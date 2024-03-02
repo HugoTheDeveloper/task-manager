@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 {% load django_bootstrap5 i18n static %}
 {% bootstrap_css %}
-{% bootstrap_messages %}
 
 <html lang="ru">
 <head>
@@ -24,19 +23,12 @@
         <span class="fs-4">{{ title_ }}</span>
       </a>
       </div>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-         {% block navbar %}
-          {% endblock %}
-      </ul>
-
-      <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button>
-      </div>
+          {% include 'components/navbar.html' %}
     </header>
   </div>
     <div class="container wrapper flex-grow-1">
+        {% bootstrap_messages %}
+
         {% block content %}
         {% endblock %}
 
