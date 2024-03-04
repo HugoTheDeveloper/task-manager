@@ -26,7 +26,7 @@ install:
 build: install collect_static migrate
 
 lint:
-	poetry run flake8 page_analyzer
+	poetry run flake8 task_manager
 
 selfcheck:
 	poetry check

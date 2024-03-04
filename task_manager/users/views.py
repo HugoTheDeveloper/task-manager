@@ -1,6 +1,6 @@
 # from django.shortcuts import render, redirect
 # from django.views import View
-from .models import CustomUser
+from .models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from .forms import CreateUserForm
@@ -12,7 +12,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 
 class IndexView(ListView):
-    model = CustomUser
+    model = User
     template_name = 'users/index.html'
     context_object_name = 'users'
 
@@ -25,7 +25,7 @@ class IndexView(ListView):
 
 
 class CreateUserView(SuccessMessageMixin, CreateView):
-    model = CustomUser
+    model = User
     form_class = CreateUserForm
     template_name = 'users/create.html'
     success_url = reverse_lazy('users_index')
@@ -50,7 +50,7 @@ class CreateUserView(SuccessMessageMixin, CreateView):
 
 class UpdateUserView(SuccessMessageMixin, AccessChangeAccountMixin,
                      LoginRequiredMixin, UpdateView):
-    model = CustomUser
+    model = User
     context_object_name = 'user'
     form_class = CreateUserForm
     template_name = 'users/update.html'
@@ -61,7 +61,7 @@ class UpdateUserView(SuccessMessageMixin, AccessChangeAccountMixin,
 
 class DeleteUserView(SuccessMessageMixin, AccessChangeAccountMixin,
                      LoginRequiredMixin, DeleteView):
-    model = CustomUser
+    model = User
     context_object_name = 'user'
     template_name = 'users/delete.html'
     success_url = reverse_lazy('users_index')

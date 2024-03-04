@@ -1,5 +1,5 @@
 from django import forms
-from .models import CustomUser
+from .models import User
 from django.utils.translation import gettext_lazy as _
 
 
@@ -18,7 +18,7 @@ class CreateUserForm(forms.ModelForm):
         return cleaned_data
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['first_name', 'last_name', 'username', 'password',
                   'password_confirm']
 

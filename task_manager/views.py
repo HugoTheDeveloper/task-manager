@@ -5,7 +5,6 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.forms import AuthenticationForm
 
 
 class StartPageView(View):
