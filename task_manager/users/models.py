@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db import models
 
 
 # Create your models here.
@@ -7,3 +8,4 @@ def __str__(self):
 
 
 User.add_to_class('__str__', __str__)
+User.add_to_class('full_name', __str__)

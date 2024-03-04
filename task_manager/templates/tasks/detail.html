@@ -1,0 +1,62 @@
+{% extends 'basement.html' %}
+{% load django_bootstrap5 i18n static %}
+
+{% block content %}
+
+<h1 class="my-4">{% trans 'Task overview' %}</h1>
+<div class="card">
+    <div class="card-header bg-secondary text-white">
+        <h2>{{ task.name }}</h2>
+    </div>
+    <div class="card-body bg-light">
+        {% if task.description %}
+        <p>{{ task.description}}</p>
+        <hr>
+        {% endif %}
+        <div class="container">
+            <div class="row p-1">
+                <div class="col">{% trans 'Author' %}</div>
+                <div class="col">{{ task.author }}</div>
+            </div>
+            <div class="row p-1">
+                <div class="col">{% trans 'Executor' %}</div>
+                <div class="col">{{ task.executor }}</div>
+            </div>
+            <div class="row p-1">
+                <div class="col">{% trans 'Status' %}</div>
+                <div class="col">{{ task.status.name }}</div>
+            </div>
+            <div class="row p-1">
+                <div class="col">{% trans 'Created at' %}</div>
+                <div class="col">{{ task.created_at }}</div>
+            </div>
+            {% if task.label_set %}
+            <div class="row p-1">
+                <h6>{% trans 'Labels' %}</h6>
+                <ul>
+                    {% for label in task.label_set %}
+                     <li>{{ label.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <div class="row p-1">
+
+                <form action="{% url 'tasks_update' task.pk %}" class="mb-2">
+                {% csrf_token %}
+                {% trans 'Update' as button_update %}
+                {% bootstrap_button button_type='submit' content=button_update %}
+                </form>
+
+                <form action="{% url 'tasks_delete' task.pk %}">
+                {% csrf_token %}
+                {% trans 'Delete' as button_delete %}
+                {% bootstrap_button button_type='submit' content=button_delete %}
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
