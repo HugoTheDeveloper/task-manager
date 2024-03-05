@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from .models import Task
 from task_manager.statuses.models import Status
 from task_manager.users.models import User
+from task_manager.labels.models import Label
 
 
 class CreateTaskForm(forms.ModelForm):
@@ -12,6 +13,7 @@ class CreateTaskForm(forms.ModelForm):
 
         status_choices = [(status.id, status.name) for status in Status.objects.all()] # noqa
         executor_choices = [(user.pk, user.full_name) for user in User.objects.all()]
+        labels_choices = [(label.id, label.name) for label in Label.objects.all()] # noqa
 
         labels = {
             'name': _('Name'),
@@ -32,3 +34,4 @@ class CreateTaskForm(forms.ModelForm):
                                      widget=forms.Select(
                                          attrs={'size': 10}
                                      ))
+        label = forms.MultipleChoiceField(choices=labels_choices)
