@@ -14,13 +14,13 @@ LABEL_INDEX = reverse_lazy('labels_index')
 class ListLabelView(LoginRequiredMixin, ListView):
     model = Label
     context_object_name = 'labels'
-    template_name = 'label/index.html'
+    template_name = 'labels/index.html'
 
 
 class CreateLabelView(SuccessMessageMixin, LoginRequiredMixin,
                        CreateView):
     model = Label
-    template_name = 'label/create.html'
+    template_name = 'labels/create.html'
     form_class = LabelCreateForm
     success_url = LABEL_INDEX
 
@@ -31,7 +31,7 @@ class UpdateLabelView(SuccessMessageMixin, LoginRequiredMixin,
                        UpdateView):
     model = Label
     context_object_name = 'label'
-    template_name = 'label/update.html'
+    template_name = 'labels/update.html'
     form_class = LabelCreateForm
     success_url = LABEL_INDEX
 
@@ -42,7 +42,7 @@ class DeleteLabelView(SuccessMessageMixin, LoginRequiredMixin,
                        DeleteView):
     model = Label
     context_object_name = 'label'
-    template_name = 'label/delete.html'
+    template_name = 'labels/delete.html'
     success_url = LABEL_INDEX
 
     success_message = _("Label is deleted successfully!")

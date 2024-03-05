@@ -30,16 +30,16 @@
                 <div class="col">{% trans 'Created at' %}</div>
                 <div class="col">{{ task.created_at }}</div>
             </div>
-            {% if task.label_set %}
             <div class="row p-1">
+                <div class="col">
                 <h6>{% trans 'Labels' %}</h6>
                 <ul>
-                    {% for label in task.label_set %}
+                    {% for label in task.label_set.all %}
                      <li>{{ label.name }}</li>
                     {% endfor %}
                 </ul>
+                </div>
             </div>
-            {% endif %}
             <div class="row p-1">
 
                 <form action="{% url 'tasks_update' task.pk %}" class="mb-2">

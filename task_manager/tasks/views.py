@@ -3,21 +3,25 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from .forms import CreateTaskForm
+from task_manager.service_tools.filters import TaskFilter
+from django_filters.views import FilterView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
-from task_manager.service_mixins.permissions import PermissionDeleteTaskRequired
+from task_manager.service_tools.permissions import PermissionDeleteTaskRequired
 
 
 # Create your views here.
 TASKS_INDEX = reverse_lazy('tasks_index')
 
 
-class TaskListView(LoginRequiredMixin, ListView):
+class TaskListView(LoginRequiredMixin, FilterView,
+                   ListView):
     model = Task
     template_name = 'tasks/index.html'
     context_object_name = 'tasks'
+    filterset_class = TaskFilter
 
 
 class TaskDetailView(LoginRequiredMixin, DetailView):

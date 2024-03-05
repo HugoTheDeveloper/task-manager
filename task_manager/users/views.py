@@ -4,7 +4,7 @@ from .models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from .forms import CreateUserForm
-from task_manager.service_mixins.permissions import PermissionChangeUserRequired
+from task_manager.service_tools.permissions import PermissionChangeUserRequired
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _

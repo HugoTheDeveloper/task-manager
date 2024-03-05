@@ -1,0 +1,345 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-05 16:58+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+#: task_manager/labels/forms.py:10 task_manager/service_tools/filters.py:12
+#: task_manager/statuses/forms.py:10 task_manager/tasks/forms.py:12
+#: task_manager/templates/labels/index.html:16
+#: task_manager/templates/status/index.html:16
+#: task_manager/templates/tasks/index.html:22 task_manager/users/forms.py:12
+msgid "Name"
+msgstr "Имя"
+
+#: task_manager/labels/views.py:27
+msgid "Label is created successfully!"
+msgstr "Метка создана успешно!"
+
+#: task_manager/labels/views.py:38
+msgid "Label is updated successfully!"
+msgstr "Метка обновлена успешно!"
+
+#: task_manager/labels/views.py:48
+msgid "Label is deleted successfully!"
+msgstr "Метка удалена успешно!"
+
+#: task_manager/service_tools/filters.py:18 task_manager/tasks/forms.py:14
+#: task_manager/templates/tasks/detail.html:26
+#: task_manager/templates/tasks/index.html:23
+msgid "Status"
+msgstr "Статус"
+
+#: task_manager/service_tools/filters.py:23 task_manager/tasks/forms.py:15
+#: task_manager/templates/tasks/detail.html:22
+#: task_manager/templates/tasks/index.html:25
+msgid "Executor"
+msgstr "Исполнитель"
+
+#: task_manager/service_tools/filters.py:28
+#: task_manager/templates/tasks/detail.html:18
+#: task_manager/templates/tasks/index.html:24
+msgid "Author"
+msgstr "Автор"
+
+#: task_manager/service_tools/filters.py:33
+msgid "Label"
+msgstr "Метка"
+
+#: task_manager/service_tools/filters.py:37
+msgid "Only my tasks"
+msgstr "Только мои задачи"
+
+#: task_manager/service_tools/filters.py:44
+msgid "Only tasks for me"
+msgstr "Только задачи для меня"
+
+#: task_manager/service_tools/permissions.py:14
+msgid "You haven't permission to edit or delete this user!"
+msgstr "У вас нет прав для изменения или удаления этого пользователя!"
+
+#: task_manager/service_tools/permissions.py:28
+msgid "You haven't permission to delete this task!"
+msgstr "У вас нет прав для удаления этой задачи!"
+
+#: task_manager/settings.py:140
+msgid "Russian"
+msgstr "Русский"
+
+#: task_manager/settings.py:140
+msgid "English"
+msgstr "Английский"
+
+#: task_manager/statuses/views.py:27
+msgid "Status is created successfully!"
+msgstr "Статус создан успешно!"
+
+#: task_manager/statuses/views.py:38
+msgid "Status is updated successfully!"
+msgstr "Статус обновлен успешно!"
+
+#: task_manager/statuses/views.py:48
+msgid "Status is deleted successfully!"
+msgstr "Статус удален успешно!"
+
+#: task_manager/tasks/forms.py:13
+msgid "Description"
+msgstr "Описание"
+
+#: task_manager/tasks/forms.py:16
+#: task_manager/templates/components/navbar.html:7
+#: task_manager/templates/labels/index.html:6
+#: task_manager/templates/tasks/detail.html:35
+msgid "Labels"
+msgstr "Метки"
+
+#: task_manager/tasks/views.py:36
+msgid "Task is created successfully!"
+msgstr "Задача создана успешно!"
+
+#: task_manager/tasks/views.py:51
+msgid "Task is updated successfully!"
+msgstr "Задача обновлена успешно!"
+
+#: task_manager/tasks/views.py:61
+msgid "Task is deleted successfully!"
+msgstr "Задача удалена успешно!"
+
+#: task_manager/templates/basement.html:12
+msgid "Task manager"
+msgstr "Менеджер задач"
+
+#: task_manager/templates/components/navbar.html:3
+#: task_manager/templates/users/index.html:6
+msgid "Users"
+msgstr "Пользователи"
+
+#: task_manager/templates/components/navbar.html:6
+#: task_manager/templates/status/index.html:6
+msgid "Statuses"
+msgstr "Статусы"
+
+#: task_manager/templates/components/navbar.html:8
+#: task_manager/templates/tasks/index.html:6
+msgid "Tasks"
+msgstr "Задачи"
+
+#: task_manager/templates/components/navbar.html:16
+msgid "Sign out"
+msgstr "Выйти"
+
+#: task_manager/templates/components/navbar.html:21
+#: task_manager/templates/login.html:5 task_manager/templates/login.html:9
+msgid "Sign in"
+msgstr "Вход"
+
+#: task_manager/templates/components/navbar.html:25
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: task_manager/templates/labels/create.html:6
+#: task_manager/templates/labels/index.html:9
+msgid "Create label"
+msgstr "Создать метку"
+
+#: task_manager/templates/labels/create.html:10
+#: task_manager/templates/status/create.html:10
+#: task_manager/templates/tasks/create.html:10
+msgid "Create"
+msgstr "Создать"
+
+#: task_manager/templates/labels/delete.html:6
+msgid "Delete label"
+msgstr "Удалить метку"
+
+#: task_manager/templates/labels/delete.html:10
+#: task_manager/templates/labels/index.html:31
+#: task_manager/templates/status/delete.html:10
+#: task_manager/templates/status/index.html:31
+#: task_manager/templates/tasks/delete.html:10
+#: task_manager/templates/tasks/detail.html:53
+#: task_manager/templates/tasks/index.html:43
+#: task_manager/templates/users/index.html:28
+msgid "Delete"
+msgstr "Удалить"
+
+#: task_manager/templates/labels/index.html:17
+#: task_manager/templates/status/index.html:17
+#: task_manager/templates/tasks/detail.html:30
+#: task_manager/templates/tasks/index.html:26
+#: task_manager/templates/users/index.html:13
+msgid "Created at"
+msgstr "Дата создания"
+
+#: task_manager/templates/labels/index.html:29
+#: task_manager/templates/status/index.html:29
+#: task_manager/templates/tasks/index.html:41
+#: task_manager/templates/users/index.html:26
+msgid "Edit"
+msgstr "Изменить"
+
+#: task_manager/templates/labels/update.html:6
+msgid "Update label"
+msgstr "Изменить метку"
+
+#: task_manager/templates/labels/update.html:10
+#: task_manager/templates/status/update.html:10
+#: task_manager/templates/tasks/detail.html:47
+#: task_manager/templates/tasks/update.html:10
+#: task_manager/templates/users/update.html:10
+msgid "Update"
+msgstr "Изменить"
+
+#: task_manager/templates/start_page.html:7
+msgid "Hello there!"
+msgstr "Привет!"
+
+#: task_manager/templates/start_page.html:8
+msgid ""
+"Task Manager is an invaluable tool for boosting productivity in today's fast-"
+"paced world. It serves as a centralized hub where individuals can "
+"efficiently organize, prioritize, and track their tasks and "
+"responsibilities. With Task Manager, one can easily break down large "
+"projects into manageable steps, set deadlines, and allocate time "
+"accordingly. This fosters a sense of clarity and control over one's "
+"workload, reducing overwhelm and ensuring tasks are completed in a timely "
+"manner. Additionally, Task Manager allows for seamless collaboration, "
+"enabling individuals to delegate tasks, share progress updates, and "
+"coordinate efforts with team members. By harnessing the power of Task "
+"Manager, productive individuals can streamline their workflow, optimize time "
+"management, and ultimately achieve their goals with greater efficiency and "
+"effectiveness."
+msgstr "Диспетчер задач - это бесценный инструмент для повышения производительности "
+ "в современном быстро меняющемся мире. Он служит централизованным узлом, где люди могут "
+ "эффективно организовывать, расставлять приоритеты и отслеживать свои задачи и обязанности."
+  "С помощью Task Manager можно легко разбивать крупные проекты на управляемые этапы, устанавливать "
+  "сроки и распределять время соответствующим образом. Это способствует ощущению ясности и контроля "
+  "над рабочей нагрузкой, снижает перегруженность и обеспечивает своевременное выполнение задач. Кроме того,"
+  " Task Manager обеспечивает бесперебойную совместную работу, позволяя делегировать задачи, делиться информацией"
+   " о ходе выполнения и координировать усилия с членами команды. Используя возможности Task Manager, продуктивные"
+    " люди могут оптимизировать свой рабочий процесс, оптимизировать управление временем и в конечном итоге достигать"
+     " своих целей с большей эффективностью и результативностью."
+
+#: task_manager/templates/start_page.html:9
+msgid "Sign up and become more productive already now!"
+msgstr "Регистрируйся и становись более продуктивным уже сейчас!"
+
+#: task_manager/templates/status/create.html:6
+#: task_manager/templates/status/index.html:9
+msgid "Create status"
+msgstr "Создать статус"
+
+#: task_manager/templates/status/delete.html:6
+msgid "Delete status"
+msgstr "Удалить статус"
+
+#: task_manager/templates/status/update.html:6
+msgid "Update status"
+msgstr "Изменить статус"
+
+#: task_manager/templates/tasks/create.html:6
+#: task_manager/templates/tasks/index.html:9
+msgid "Create task"
+msgstr "Создать задачу"
+
+#: task_manager/templates/tasks/delete.html:6
+msgid "Delete task"
+msgstr "Удалить задачу"
+
+#: task_manager/templates/tasks/detail.html:6
+msgid "Task overview"
+msgstr "Просмотр задачи"
+
+#: task_manager/templates/tasks/index.html:15
+msgid "Show"
+msgstr "Показать"
+
+#: task_manager/templates/tasks/update.html:6
+msgid "Update task"
+msgstr "Изменить задачу"
+
+#: task_manager/templates/users/create.html:6
+msgid "Registration"
+msgstr "Регистрация"
+
+#: task_manager/templates/users/create.html:10
+msgid "Register"
+msgstr "Зарегистрировать"
+
+#: task_manager/templates/users/delete.html:7
+msgid "Delete user"
+msgstr "Удалить пользователя"
+
+#: task_manager/templates/users/delete.html:8
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены,что хотите удалить пользователя?"
+
+#: task_manager/templates/users/delete.html:12
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: task_manager/templates/users/index.html:11
+msgid "User's name"
+msgstr "Имя пользователя"
+
+#: task_manager/templates/users/index.html:12
+msgid "Full name"
+msgstr "Полное имя"
+
+#: task_manager/templates/users/update.html:6
+msgid "Update user"
+msgstr "Изменить пользователя"
+
+#: task_manager/users/forms.py:13
+msgid "Sirname"
+msgstr "Фамилия"
+
+#: task_manager/users/forms.py:14
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: task_manager/users/forms.py:15
+msgid "Password"
+msgstr "Пароль"
+
+#: task_manager/users/forms.py:18
+msgid ""
+"Required field. No more than 150 characters. Only letters, numbers and @/./"
+"+/-//_ symbols."
+msgstr "Обязательное поле. Не более 150 символов. Только буквы, цифры и @/./"
+"+/-//_ символы."
+
+#: task_manager/users/views.py:32
+msgid "User was successfully created!"
+msgstr "Пользователь изменен создан!"
+
+#: task_manager/users/views.py:59
+msgid "User was successfully updated!"
+msgstr "Пользователь изменен успешно!"
+
+#: task_manager/users/views.py:68
+msgid "User was successfully deleted!"
+msgstr "Пользователь удален успешно!"
+
+#: task_manager/views.py:21
+msgid "You are logged in successfully!"
+msgstr "Вы вошли в систему успешно!"
+
+#: task_manager/views.py:26
+msgid "You are logged out"
+msgstr "Вы вышли из системы"

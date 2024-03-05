@@ -1,37 +1,29 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from .models import Task
-from task_manager.statuses.models import Status
-from task_manager.users.models import User
-from task_manager.labels.models import Label
 
 
 class CreateTaskForm(forms.ModelForm):
     class Meta():
         model = Task
-        fields = ['name', 'description', 'status', 'executor']
-
-        status_choices = [(status.id, status.name) for status in Status.objects.all()] # noqa
-        executor_choices = [(user.pk, user.full_name) for user in User.objects.all()]
-        labels_choices = [(label.id, label.name) for label in Label.objects.all()] # noqa
+        fields = ['name', 'description', 'status', 'executor', 'label_set']
 
         labels = {
             'name': _('Name'),
             'description': _('Description'),
             'status': _('Status'),
-            'executor': _('Executor')
+            'executor': _('Executor'),
+            'label_set': _('Labels')
         }
-        status = forms.ChoiceField(choices=status_choices,
-                                   initial='---------',
+        status = forms.ChoiceField(initial='---------',
                                    widget=forms.Select(
                                        attrs={
                                            'required': True,
                                            'size': 2,
                                        }
                                    ))
-        executor = forms.ChoiceField(choices=executor_choices,
-                                     initial='---------',
+        executor = forms.ChoiceField(initial='---------',
                                      widget=forms.Select(
                                          attrs={'size': 10}
                                      ))
-        label = forms.MultipleChoiceField(choices=labels_choices)
+        label_set = forms.MultipleChoiceField()
