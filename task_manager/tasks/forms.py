@@ -10,7 +10,7 @@ class CreateTaskForm(forms.ModelForm):
         model = Task
         fields = ['name', 'description', 'status', 'executor']
 
-        status_choices = [(status.pk, status.name) for status in Status.objects.all()]
+        status_choices = [(status.id, status.name) for status in Status.objects.all()] # noqa
         executor_choices = [(user.pk, user.full_name) for user in User.objects.all()]
 
         labels = {

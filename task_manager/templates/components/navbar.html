@@ -2,17 +2,20 @@
 <ul class="nav nav-pills">
     <li class="nav-item"><a href="{% url 'users_index' %}" class="nav-link">{% trans 'Users' %}</a></li>
     {% with user.is_authenticated as authenticated %}
+    {% if authenticated %}
     <li class="nav-item"><a href="{% url 'status_index' %}" class="nav-link">{% trans 'Statuses' %}</a></li>
     <li class="nav-item"><a href="#" class="nav-link">{% trans 'Labels' %}</a></li>
     <li class="nav-item"><a href="{% url 'tasks_index' %}" class="nav-link">{% trans 'Tasks' %}</a></li>
-    <li> Authenticated = {{ authenticated }}</li>
+    {% endif %}
 </ul>
 
 <div class="col-md-3 d-flex text-end ">
+    {% if authenticated %}
     <form class="form" action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-outline-primary me-2">{% trans 'Sign out' %}</button>
     </form>
+    {% else %}
     <form class="form" action="{% url 'login' %}">
         {% csrf_token %}
         <button type="submit" class="btn btn-outline-primary me-2">{% trans 'Sign in' %}</button>
@@ -21,6 +24,7 @@
             {% csrf_token %}
             <button type="submit" class="btn btn-primary btn-block">{% trans 'Sign up' %}</button>
         </form>
+    {% endif %}
 </div>
 
 {% endwith %}
