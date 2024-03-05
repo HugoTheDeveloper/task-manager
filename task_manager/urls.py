@@ -25,7 +25,7 @@ urlpatterns = [
     path('login/', task_manager.views.CustomLoginView.as_view(), name='login'),
     path('logout/', task_manager.views.LogoutView.as_view(), name='logout'),
     path('users/', include('task_manager.users.urls')),
-    # path('labels/', include('task_manager.labels.urls')),
+    path('labels/', include('task_manager.labels.urls')),
     path('statuses/', include('task_manager.statuses.urls')),
     path('tasks/', include('task_manager.tasks.urls')),
 ]
