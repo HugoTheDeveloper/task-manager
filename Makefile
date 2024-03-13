@@ -23,13 +23,16 @@ prod:
 install:
 	poetry install
 
-build: install collect_static setup_migration migrate
+build: install collect_static migrate
 
 lint:
 	poetry run flake8 task_manager
 
 selfcheck:
 	poetry check
+
+test:
+	$(MANAGE) test
 
 check: selfcheck lint
 
