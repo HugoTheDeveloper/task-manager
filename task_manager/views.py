@@ -9,8 +9,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 class StartPageView(View):
     @staticmethod
     def get(request, *args, **kwargs):
-        a = None
-        a.hello()
         return render(request, 'start_page.html', {})
 
 
