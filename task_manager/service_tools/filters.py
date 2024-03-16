@@ -9,7 +9,7 @@ from task_manager.tasks.models import Task
 
 class TaskFilter(django_filters.FilterSet):
     label_set = ModelChoiceFilter(queryset=Label.objects.all(), # noqa
-                               label=_('Label'))
+                                  label=_('Label'))
 
     name = django_filters.BooleanFilter(field_name='author',
                                         widget=forms.CheckboxInput,

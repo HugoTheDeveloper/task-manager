@@ -18,7 +18,7 @@ class ListLabelView(LoginRequiredMixin, ListView):
 
 
 class CreateLabelView(SuccessMessageMixin, LoginRequiredMixin,
-                       CreateView):
+                      CreateView):
     model = Label
     template_name = 'labels/create.html'
     form_class = LabelCreateForm
@@ -28,7 +28,7 @@ class CreateLabelView(SuccessMessageMixin, LoginRequiredMixin,
 
 
 class UpdateLabelView(SuccessMessageMixin, LoginRequiredMixin,
-                       UpdateView):
+                      UpdateView):
     model = Label
     context_object_name = 'label'
     template_name = 'labels/update.html'
@@ -39,7 +39,7 @@ class UpdateLabelView(SuccessMessageMixin, LoginRequiredMixin,
 
 
 class DeleteLabelView(SuccessMessageMixin, LoginRequiredMixin,
-                       DeleteView):
+                      DeleteView):
     model = Label
     context_object_name = 'label'
     template_name = 'labels/delete.html'

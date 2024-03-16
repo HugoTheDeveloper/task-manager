@@ -19,26 +19,47 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Membership',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('label', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='labels.label')),
+                ('id', models.BigAutoField(auto_created=True,
+                                           primary_key=True,
+                                           serialize=False,
+                                           verbose_name='ID')),
+                ('label', models.ForeignKey(
+                    on_delete=django.db.models.deletion.PROTECT,
+                    to='labels.label')),
             ],
         ),
         migrations.CreateModel(
             name='Task',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True)),
+                ('id', models.BigAutoField(auto_created=True,
+                                           primary_key=True,
+                                           serialize=False,
+                                           verbose_name='ID')),
+                ('name', models.CharField(max_length=255,
+                                          unique=True)),
                 ('description', models.TextField(blank=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL)),
-                ('executor', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='tasks_todo', to=settings.AUTH_USER_MODEL)),
-                ('label_set', models.ManyToManyField(through='tasks.Membership', to='labels.label')),
-                ('status', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='statuses.status')),
+                ('author', models.ForeignKey(
+                    on_delete=django.db.models.deletion.PROTECT,
+                    to=settings.AUTH_USER_MODEL)),
+                ('executor', models.ForeignKey(blank=True,
+                                               null=True,
+                                               on_delete=django.db.models.deletion.PROTECT, # noqa
+                                               related_name='tasks_todo',
+                                               to=settings.AUTH_USER_MODEL)),
+                ('label_set', models.ManyToManyField(
+                    through='tasks.Membership',
+                    to='labels.label')),
+                ('status', models.ForeignKey(
+                    on_delete=django.db.models.deletion.PROTECT,
+                    to='statuses.status')),
             ],
         ),
         migrations.AddField(
             model_name='membership',
             name='task',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='tasks.task'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                to='tasks.task'),
         ),
     ]
