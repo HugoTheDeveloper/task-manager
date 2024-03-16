@@ -1,4 +1,4 @@
-{% load django_bootstrap5 i18n static %}
+{% load django_bootstrap5 i18n %}
 <ul class="nav nav-pills">
     <li class="nav-item"><a href="{% url 'users_index' %}" class="nav-link">{% trans 'Users' %}</a></li>
     {% with user.is_authenticated as authenticated %}

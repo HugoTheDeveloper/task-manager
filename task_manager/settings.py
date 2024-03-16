@@ -102,20 +102,15 @@ ROLLBAR = {
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-LOCAL_DB = {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': BASE_DIR / 'db.sqlite3',
-}
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
-        conn_max_age=600)
+    'default':
+        dj_database_url.config(
+            default='sqlite:///db.sqlite3',
+            conn_max_age=600,
+        )
 }
-
-DB_ENGINE = os.getenv('DB_ENGINE')
-if DB_ENGINE == 'SQLite':
-    DATABASES['default'] = LOCAL_DB
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -145,7 +140,7 @@ LOCALE_PATHS = [
 
 LANGUAGE_CODE = 'en-us'
 
-LANGUAGES = [('ru', _('Russian')), ('en', _('English'))]
+LANGUAGES = [('ru', 'Russian'), ('en', 'English')]
 
 TIME_ZONE = 'UTC'
 

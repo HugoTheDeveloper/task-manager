@@ -23,7 +23,7 @@ prod:
 install:
 	poetry install
 
-build: install collect_static migrate
+build: install migrate
 
 lint:
 	poetry run flake8 task_manager
@@ -34,7 +34,7 @@ selfcheck:
 test:
 	$(MANAGE) test
 
-check: selfcheck lint
+check: selfcheck lint test
 
 new_locales:
 	django-admin makemessages -l ru --ignore=venv/* --ignore=static/* --ignore=/task_manager/labels/* --ignore=/task_manager/statuses/* --ignore=/task_manager/tasks/* --ignore=/task_manager/users/* --ignore=/task_manager/asgi.py --ignore=/task_manager/settings.py --ignore=/task_manager/urls.py --ignore=/task_manager/views.py --ignore=/task_manager/wsgi.py

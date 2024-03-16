@@ -5,7 +5,7 @@ from django.test import TestCase, Client
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
-from task_manager.data_loader import from_json
+from task_manager.service_tools.data_loader import from_json
 
 
 class UserTestCase(TestCase):

@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 from task_manager.statuses.models import Status
 from task_manager.users.models import User
-from task_manager.data_loader import from_json
+from task_manager.service_tools.data_loader import from_json
 
 
 class StatusTestCase(TestCase):

@@ -8,7 +8,7 @@ from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 from task_manager.tasks.models import Task
 from task_manager.users.models import User
-from task_manager.data_loader import from_json
+from task_manager.service_tools.data_loader import from_json
 
 
 class TaskTestCase(TestCase):
