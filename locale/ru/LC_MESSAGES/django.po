@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-05 16:58+0300\n"
+"POT-Creation-Date: 2024-03-18 12:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: task_manager/labels/forms.py:10 task_manager/service_tools/filters.py:12
-#: task_manager/statuses/forms.py:10 task_manager/tasks/forms.py:12
-#: task_manager/templates/labels/index.html:16
+
+#: task_manager/labels/forms.py:10 task_manager/statuses/forms.py:10
+#: task_manager/tasks/forms.py:12 task_manager/templates/labels/index.html:16
 #: task_manager/templates/status/index.html:16
 #: task_manager/templates/tasks/index.html:22 task_manager/users/forms.py:12
 msgid "Name"
 msgstr "Имя"
+
+#: task_manager/labels/models.py:15 task_manager/service_tools/filters.py:12
+msgid "Label"
+msgstr "Метка"
 
 #: task_manager/labels/views.py:27
 msgid "Label is created successfully!"
@@ -39,35 +43,11 @@ msgstr "Метка обновлена успешно!"
 msgid "Label is deleted successfully!"
 msgstr "Метка удалена успешно!"
 
-#: task_manager/service_tools/filters.py:18 task_manager/tasks/forms.py:14
-#: task_manager/templates/tasks/detail.html:26
-#: task_manager/templates/tasks/index.html:23
-msgid "Status"
-msgstr "Статус"
-
-#: task_manager/service_tools/filters.py:23 task_manager/tasks/forms.py:15
-#: task_manager/templates/tasks/detail.html:22
-#: task_manager/templates/tasks/index.html:25
-msgid "Executor"
-msgstr "Исполнитель"
-
-#: task_manager/service_tools/filters.py:28
-#: task_manager/templates/tasks/detail.html:18
-#: task_manager/templates/tasks/index.html:24
-msgid "Author"
-msgstr "Автор"
-
-#: task_manager/service_tools/filters.py:33
-msgid "Label"
-msgstr "Метка"
-
-#: task_manager/service_tools/filters.py:37
-msgid "Only my tasks"
+#: task_manager/service_tools/filters.py:16
+#, fuzzy
+#| msgid "Only tasks for me"
+msgid "Own tasks only"
 msgstr "Только мои задачи"
-
-#: task_manager/service_tools/filters.py:44
-msgid "Only tasks for me"
-msgstr "Только задачи для меня"
 
 #: task_manager/service_tools/permissions.py:14
 msgid "You haven't permission to edit or delete this user!"
@@ -77,13 +57,17 @@ msgstr "У вас нет прав для изменения или удален�
 msgid "You haven't permission to delete this task!"
 msgstr "У вас нет прав для удаления этой задачи!"
 
-#: task_manager/settings.py:140
-msgid "Russian"
-msgstr "Русский"
+#: task_manager/statuses/models.py:14 task_manager/tasks/forms.py:14
+#: task_manager/templates/tasks/detail.html:26
+#: task_manager/templates/tasks/index.html:23
+msgid "Status"
+msgstr "Статус"
 
-#: task_manager/settings.py:140
-msgid "English"
-msgstr "Английский"
+#: task_manager/statuses/models.py:15
+#: task_manager/templates/components/navbar.html:6
+#: task_manager/templates/status/index.html:6
+msgid "Statuses"
+msgstr "Статусы"
 
 #: task_manager/statuses/views.py:27
 msgid "Status is created successfully!"
@@ -101,6 +85,11 @@ msgstr "Статус удален успешно!"
 msgid "Description"
 msgstr "Описание"
 
+#: task_manager/tasks/forms.py:15 task_manager/templates/tasks/detail.html:22
+#: task_manager/templates/tasks/index.html:25
+msgid "Executor"
+msgstr "Исполнитель"
+
 #: task_manager/tasks/forms.py:16
 #: task_manager/templates/components/navbar.html:7
 #: task_manager/templates/labels/index.html:6
@@ -108,31 +97,36 @@ msgstr "Описание"
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/tasks/views.py:36
+#: task_manager/tasks/models.py:20
+#, fuzzy
+#| msgid "Tasks"
+msgid "Task"
+msgstr "Задачи"
+
+#: task_manager/tasks/views.py:40
 msgid "Task is created successfully!"
 msgstr "Задача создана успешно!"
 
-#: task_manager/tasks/views.py:51
+#: task_manager/tasks/views.py:55
 msgid "Task is updated successfully!"
 msgstr "Задача обновлена успешно!"
 
-#: task_manager/tasks/views.py:61
+#: task_manager/tasks/views.py:65
 msgid "Task is deleted successfully!"
 msgstr "Задача удалена успешно!"
 
-#: task_manager/templates/basement.html:12
+#: task_manager/templates/basement.html:13
 msgid "Task manager"
 msgstr "Менеджер задач"
+
+#: task_manager/templates/basement.html:43
+msgid "Want like this!"
+msgstr "Хочу также!"
 
 #: task_manager/templates/components/navbar.html:3
 #: task_manager/templates/users/index.html:6
 msgid "Users"
 msgstr "Пользователи"
-
-#: task_manager/templates/components/navbar.html:6
-#: task_manager/templates/status/index.html:6
-msgid "Statuses"
-msgstr "Статусы"
 
 #: task_manager/templates/components/navbar.html:8
 #: task_manager/templates/tasks/index.html:6
@@ -224,16 +218,20 @@ msgid ""
 "Manager, productive individuals can streamline their workflow, optimize time "
 "management, and ultimately achieve their goals with greater efficiency and "
 "effectiveness."
-msgstr "Диспетчер задач - это бесценный инструмент для повышения производительности "
- "в современном быстро меняющемся мире. Он служит централизованным узлом, где люди могут "
- "эффективно организовывать, расставлять приоритеты и отслеживать свои задачи и обязанности."
-  "С помощью Task Manager можно легко разбивать крупные проекты на управляемые этапы, устанавливать "
-  "сроки и распределять время соответствующим образом. Это способствует ощущению ясности и контроля "
-  "над рабочей нагрузкой, снижает перегруженность и обеспечивает своевременное выполнение задач. Кроме того,"
-  " Task Manager обеспечивает бесперебойную совместную работу, позволяя делегировать задачи, делиться информацией"
-   " о ходе выполнения и координировать усилия с членами команды. Используя возможности Task Manager, продуктивные"
-    " люди могут оптимизировать свой рабочий процесс, оптимизировать управление временем и в конечном итоге достигать"
-     " своих целей с большей эффективностью и результативностью."
+msgstr ""
+"Диспетчер задач - это бесценный инструмент для повышения производительности "
+"в современном быстро меняющемся мире. Он служит централизованным узлом, где "
+"люди могут эффективно организовывать, расставлять приоритеты и отслеживать "
+"свои задачи и обязанности.С помощью Task Manager можно легко разбивать "
+"крупные проекты на управляемые этапы, устанавливать сроки и распределять "
+"время соответствующим образом. Это способствует ощущению ясности и контроля "
+"над рабочей нагрузкой, снижает перегруженность и обеспечивает своевременное "
+"выполнение задач. Кроме того, Task Manager обеспечивает бесперебойную "
+"совместную работу, позволяя делегировать задачи, делиться информацией о ходе "
+"выполнения и координировать усилия с членами команды. Используя возможности "
+"Task Manager, продуктивные люди могут оптимизировать свой рабочий процесс, "
+"оптимизировать управление временем и в конечном итоге достигать своих целей "
+"с большей эффективностью и результативностью."
 
 #: task_manager/templates/start_page.html:9
 msgid "Sign up and become more productive already now!"
@@ -264,6 +262,11 @@ msgstr "Удалить задачу"
 #: task_manager/templates/tasks/detail.html:6
 msgid "Task overview"
 msgstr "Просмотр задачи"
+
+#: task_manager/templates/tasks/detail.html:18
+#: task_manager/templates/tasks/index.html:24
+msgid "Author"
+msgstr "Автор"
 
 #: task_manager/templates/tasks/index.html:15
 msgid "Show"
@@ -305,6 +308,117 @@ msgstr "Полное имя"
 msgid "Update user"
 msgstr "Изменить пользователя"
 
+#: task_manager/tests/test_labels.py:40 task_manager/tests/test_statuses.py:37
+#: task_manager/tests/test_tasks.py:48 task_manager/tests/test_users.py:178
+#, fuzzy
+#| msgid "You are logged in successfully!"
+msgid "You are not logged in! Please log in."
+msgstr "Вы вошли в систему успешно!"
+
+#: task_manager/tests/test_labels.py:99
+#, fuzzy
+#| msgid "Label is created successfully!"
+msgid "Label created successfully"
+msgstr "Метка создана успешно!"
+
+#: task_manager/tests/test_labels.py:137
+#, fuzzy
+#| msgid "Label is updated successfully!"
+msgid "Label updated successfully"
+msgstr "Метка обновлена успешно!"
+
+#: task_manager/tests/test_labels.py:171
+msgid "Unable to delete label because it is in use"
+msgstr ""
+
+#: task_manager/tests/test_labels.py:189
+#, fuzzy
+#| msgid "Label is deleted successfully!"
+msgid "Label deleted successfully"
+msgstr "Метка удалена успешно!"
+
+#: task_manager/tests/test_statuses.py:96
+#, fuzzy
+#| msgid "Status is created successfully!"
+msgid "Status created successfully"
+msgstr "Статус создан успешно!"
+
+#: task_manager/tests/test_statuses.py:134
+#, fuzzy
+#| msgid "Status is updated successfully!"
+msgid "Status updated successfully"
+msgstr "Статус обновлен успешно!"
+
+#: task_manager/tests/test_statuses.py:168
+msgid "Unable to delete status because it is in use"
+msgstr ""
+
+#: task_manager/tests/test_statuses.py:186
+#, fuzzy
+#| msgid "Status is deleted successfully!"
+msgid "Status deleted successfully"
+msgstr "Статус удален успешно!"
+
+#: task_manager/tests/test_tasks.py:110
+#, fuzzy
+#| msgid "Task is created successfully!"
+msgid "Task created successfully"
+msgstr "Задача создана успешно!"
+
+#: task_manager/tests/test_tasks.py:150
+#, fuzzy
+#| msgid "Task is updated successfully!"
+msgid "Task updated successfully"
+msgstr "Задача обновлена успешно!"
+
+#: task_manager/tests/test_tasks.py:184
+msgid "Only the author of the task can delete it"
+msgstr ""
+
+#: task_manager/tests/test_tasks.py:202
+#, fuzzy
+#| msgid "Task is deleted successfully!"
+msgid "Task deleted successfully"
+msgstr "Задача удалена успешно!"
+
+#: task_manager/tests/test_users.py:80
+#, fuzzy
+#| msgid "Task is created successfully!"
+msgid "User has been registered successfully"
+msgstr "Задача создана успешно!"
+
+#: task_manager/tests/test_users.py:85
+msgid "Enter a valid username"
+msgstr ""
+
+#: task_manager/tests/test_users.py:99
+msgid "This password is too short"
+msgstr ""
+
+#: task_manager/tests/test_users.py:113
+msgid "The two password fields didn’t match."
+msgstr ""
+
+#: task_manager/tests/test_users.py:153
+#, fuzzy
+#| msgid "User was successfully updated!"
+msgid "User is successfully updated"
+msgstr "Пользователь изменен успешно!"
+
+#: task_manager/tests/test_users.py:196
+msgid "You have no rights to change another user."
+msgstr ""
+
+#: task_manager/tests/test_users.py:211
+msgid "Unable to delete user because it is in use"
+msgstr ""
+
+#: task_manager/tests/test_users.py:230
+#, fuzzy
+#| msgid "User was successfully deleted!"
+msgid "User is successfully deleted"
+msgstr "Пользователь удален успешно!"
+
 #: task_manager/users/forms.py:13
 msgid "Sirname"
 msgstr "Фамилия"
@@ -321,8 +435,9 @@ msgstr "Пароль"
 msgid ""
 "Required field. No more than 150 characters. Only letters, numbers and @/./"
 "+/-//_ symbols."
-msgstr "Обязательное поле. Не более 150 символов. Только буквы, цифры и @/./"
-"+/-//_ символы."
+msgstr ""
+"Обязательное поле. Не более 150 символов. Только буквы, цифры и @/./+/-//_ "
+"символы."
 
 #: task_manager/users/views.py:32
 msgid "User was successfully created!"
@@ -336,10 +451,19 @@ msgstr "Пользователь изменен успешно!"
 msgid "User was successfully deleted!"
 msgstr "Пользователь удален успешно!"
 
-#: task_manager/views.py:21
+#: task_manager/views.py:18
 msgid "You are logged in successfully!"
 msgstr "Вы вошли в систему успешно!"
 
-#: task_manager/views.py:26
+#: task_manager/views.py:22
 msgid "You are logged out"
 msgstr "Вы вышли из системы"
+
+#~ msgid "Only my tasks"
+#~ msgstr "Только мои задачи"
+
+#~ msgid "Russian"
+#~ msgstr "Русский"
+
+#~ msgid "English"
+#~ msgstr "Английский"

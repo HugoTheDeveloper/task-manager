@@ -2,6 +2,7 @@ from django.db import models
 from task_manager.users.models import User
 from task_manager.statuses.models import Status
 from task_manager.labels.models import Label
+from django.utils.translation import gettext_lazy as _
 
 
 # Create your models here.
@@ -14,6 +15,9 @@ class Task(models.Model):
     executor = models.ForeignKey(User, on_delete=models.PROTECT, null=True,
                                  blank=True, related_name='tasks_todo')
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = _('Task')
 
 
 class Membership(models.Model):

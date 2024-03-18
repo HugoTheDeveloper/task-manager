@@ -11,10 +11,10 @@ class TaskFilter(django_filters.FilterSet):
     label_set = ModelChoiceFilter(queryset=Label.objects.all(), # noqa
                                   label=_('Label'))
 
-    name = django_filters.BooleanFilter(field_name=_('author'),
+    name = django_filters.BooleanFilter(field_name='author',
                                         widget=forms.CheckboxInput,
                                         label=_('Own tasks only'),
-                                        method=_('get_own_tasks'))
+                                        method='get_own_tasks')
 
     def get_own_tasks(self, queryset, name, value):
         if not value:
