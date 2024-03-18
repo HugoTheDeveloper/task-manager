@@ -140,7 +140,7 @@ msgstr "Выйти"
 #: task_manager/templates/components/navbar.html:21
 #: task_manager/templates/login.html:5 task_manager/templates/login.html:9
 msgid "Sign in"
-msgstr "Вход"
+msgstr "Войти"
 
 #: task_manager/templates/components/navbar.html:25
 msgid "Sign up"
