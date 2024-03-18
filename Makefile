@@ -23,7 +23,7 @@ prod:
 install:
 	poetry install
 
-build: install migrate
+build: install collect_static migrate
 
 lint:
 	poetry run flake8 task_manager
