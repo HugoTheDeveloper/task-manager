@@ -136,7 +136,7 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),  # Каталог с переводами по умолчанию
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 LANGUAGES = [('ru', 'Russian'), ('en', 'English')]
 
@@ -151,7 +151,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-if DEBUG == 'RENDER':
+if not DEBUG:
     STATIC_ROOT = BASE_DIR / 'staticfiles'
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 {% load django_bootstrap5 i18n static %}
 {% bootstrap_css %}
+{% get_current_language as LANGUAGE_CODE %}
 
-<html lang="ru">
+<html lang='{{ LANGUAGE_CODE }}'>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,7 +40,7 @@
     <ul class="nav justify-content-center pb-3 mb-3">
       <li class="nav-item"><a href="https://ru.hexlet.io" class="nav-link px-2 text-body-secondary">Hexlet</a></li>
       <li class="nav-item"><a href="https://github.com/HugoTheDeveloper/task-manager" class="nav-link px-2 text-body-secondary">Github</a></li>
-      <li class="nav-item"><a href="https://t.me/bigabaga" class="nav-link px-2 text-body-secondary">Want like this!</a></li>
+      <li class="nav-item"><a href="https://t.me/bigabaga" class="nav-link px-2 text-body-secondary">{% trans 'Want like this!' %} </a></li>
     </ul>
       </div>
   </footer>
