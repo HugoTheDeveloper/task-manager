@@ -22,4 +22,4 @@ class Task(models.Model):
 
 class Membership(models.Model):
     label = models.ForeignKey(Label, on_delete=models.PROTECT)
-    task = models.ForeignKey(Task, on_delete=models.DO_NOTHING)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)

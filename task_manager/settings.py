@@ -90,6 +90,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 
+# Bug and errors reporter
 ROLLBAR = {
     'access_token': 'dc601d26f6324cf488e69889cce0bfee',
     'environment': 'development' if DEBUG else 'production',
