@@ -91,8 +91,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 # Bug and errors reporter
+ROLLBAR_TOKEN = os.getenv('ROLLBAR_TOKEN')
+
 ROLLBAR = {
-    'access_token': 'dc601d26f6324cf488e69889cce0bfee',
+    'access_token': ROLLBAR_TOKEN,
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
@@ -137,7 +139,7 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),  # Каталог с переводами по умолчанию
 ]
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 
 LANGUAGES = [('ru', 'Russian'), ('en', 'English')]
 
