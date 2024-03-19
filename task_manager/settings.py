@@ -139,7 +139,7 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),  # Каталог с переводами по умолчанию
 ]
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ru'
 
 LANGUAGES = [('ru', 'Russian'), ('en', 'English')]
 
