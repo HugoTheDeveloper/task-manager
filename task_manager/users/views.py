@@ -1,7 +1,7 @@
 from .models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
-from .forms import CreateUserForm
+from .forms import CreateUserForm, UpdateUserForm
 from task_manager.service_tools.permissions import (PermissionChangeUserRequired,
                                                     DeletionRestricted,
                                                     LoginRequired)
@@ -53,7 +53,7 @@ class UpdateUserView(SuccessMessageMixin, PermissionChangeUserRequired,
                      LoginRequired, UpdateView):
     model = User
     context_object_name = 'user'
-    form_class = CreateUserForm
+    form_class = UpdateUserForm
     template_name = 'users/update.html'
     success_url = USERS_INDEX
     initial = {'password': ''}

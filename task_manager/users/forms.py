@@ -26,3 +26,9 @@ class CreateUserForm(UserCreationForm):
                              'and @/./+/-//_.')
             }
         }
+
+
+class UpdateUserForm(CreateUserForm):
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        return username
