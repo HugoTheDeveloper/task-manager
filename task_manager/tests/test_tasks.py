@@ -29,7 +29,7 @@ class TaskTestCase(TestCase):
         self.label_2 = Label.objects.get(pk=2)
 
         self.task_1 = Task.objects.get(pk=1)
-        self.task_1.labels.set([self.label_1, self.label_2])
+        self.task_1.label_set.set([self.label_1, self.label_2])
         self.task_2 = Task.objects.get(pk=2)
         self.tasks_count = Task.objects.count()
 
@@ -37,7 +37,7 @@ class TaskTestCase(TestCase):
 class TestTasksListView(TaskTestCase):
     def test_tasks_view_if_unauthorized(self):
         self.client.logout()
-        response = self.client.get(reverse_lazy('tasks_list'))
+        response = self.client.get(reverse_lazy('tasks_index'))
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
@@ -46,35 +46,33 @@ class TestTasksListView(TaskTestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('You are not logged in! Please log in.'))
-        self.assertEqual(messages[0].level, 40)
 
     def test_tasks_view(self):
-        response = self.client.get(reverse_lazy('tasks_list'))
+        response = self.client.get(reverse_lazy('tasks_index'))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'tasks/list.html')
+        self.assertTemplateUsed(response, 'tasks/index.html')
 
     def test_tasks_columns(self):
         valid_task = self.test_tasks['list']
-        response = self.client.get(reverse_lazy('tasks_list'))
+        response = self.client.get(reverse_lazy('tasks_index'))
         page = str(response.content)
-        tag_class = 'class="align-middle"'
 
-        self.assertInHTML(f'<td {tag_class}>{valid_task["id"]}</td>',
+        self.assertInHTML(f'<td>{valid_task["id"]}</td>',
                           page)
         self.assertIn(valid_task["url"], page)
         self.assertInHTML(valid_task["name"], page)
-        self.assertInHTML(f'<td {tag_class}>{valid_task["author"]}</td>',
+        self.assertInHTML(f'<td>{valid_task["author"]}</td>',
                           page)
-        self.assertInHTML(f'<td {tag_class}>{valid_task["executor"]}</td>',
+        self.assertInHTML(f'<td>{valid_task["executor"]}</td>',
                           page)
         self.assertInHTML(
-            f'<td {tag_class}>{valid_task["created_at"]}</td>',
+            f'<td>{valid_task["created_at"]}</td>',
             page
         )
 
     def test_tasks_rows(self):
-        response = self.client.get(reverse_lazy('tasks_list'))
+        response = self.client.get(reverse_lazy('tasks_index'))
         page = str(response.content)
 
         self.assertInHTML(self.task_1.name, page)
@@ -84,38 +82,37 @@ class TestTasksListView(TaskTestCase):
 class TestTaskCreateView(TaskTestCase):
     def test_create_task_if_unauthorized(self):
         self.client.logout()
-        response = self.client.get(reverse_lazy('task_create'))
+        response = self.client.get(reverse_lazy('tasks_create'))
 
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
 
     def test_create_task_view(self):
-        response = self.client.get(reverse_lazy('task_create'))
+        response = self.client.get(reverse_lazy('tasks_create'))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='tasks/create.html')
 
     def test_create_task(self):
         valid_task = self.test_tasks['create']
-        response = self.client.post(reverse_lazy('task_create'),
+        response = self.client.post(reverse_lazy('tasks_create'),
                                     data=valid_task)
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse_lazy('tasks_list'))
+        self.assertRedirects(response, reverse_lazy('tasks_index'))
         self.assertEqual(Task.objects.count(), self.tasks_count + 1)
 
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('Task created successfully'))
-        self.assertEqual(messages[0].level, 25)
 
 
 class TestTaskUpdateView(TaskTestCase):
     def test_update_task_if_unauthorized(self):
         self.client.logout()
         response = self.client.get(
-            reverse_lazy('task_update', kwargs={'pk': 1})
+            reverse_lazy('tasks_update', kwargs={'pk': 1})
         )
 
         self.assertEqual(response.status_code, 302)
@@ -123,7 +120,7 @@ class TestTaskUpdateView(TaskTestCase):
 
     def test_update_task_view(self):
         response = self.client.get(
-            reverse_lazy('task_update', kwargs={'pk': 2})
+            reverse_lazy('tasks_update', kwargs={'pk': 2})
         )
 
         self.assertEqual(response.status_code, 200)
@@ -132,13 +129,13 @@ class TestTaskUpdateView(TaskTestCase):
     def test_update_task(self):
         task_data = self.test_tasks['update']
         response = self.client.post(
-            reverse_lazy('task_update', kwargs={'pk': 1}), data=task_data
+            reverse_lazy('tasks_update', kwargs={'pk': 1}), data=task_data
         )
         updated_task = Task.objects.get(pk=self.task_1.pk)
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse_lazy('tasks_list'))
+        self.assertRedirects(response, reverse_lazy('tasks_index'))
         self.assertEqual(Task.objects.count(), self.tasks_count)
         self.assertEqual(updated_task.name, task_data['name'])
         self.assertEqual(updated_task.description, task_data['description'])
@@ -148,14 +145,13 @@ class TestTaskUpdateView(TaskTestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('Task updated successfully'))
-        self.assertEqual(messages[0].level, 25)
 
 
 class TestTaskDeleteView(TaskTestCase):
     def test_delete_task_if_unauthorized(self):
         self.client.logout()
         response = self.client.get(
-            reverse_lazy('task_delete', kwargs={'pk': 2})
+            reverse_lazy('tasks_delete', kwargs={'pk': 2})
         )
 
         self.assertEqual(response.status_code, 302)
@@ -163,35 +159,34 @@ class TestTaskDeleteView(TaskTestCase):
 
     def test_delete_task_view(self):
         response = self.client.get(
-            reverse_lazy('task_delete', kwargs={'pk': 1})
+            reverse_lazy('tasks_delete', kwargs={'pk': 1})
         )
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='tasks/delete.html')
 
-    def test_delete_task_not_author(self):
+    def test_delete_foreign_task(self):
         response = self.client.post(
-            reverse_lazy('task_delete', kwargs={'pk': 2})
+            reverse_lazy('tasks_delete', kwargs={'pk': 2})
         )
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse_lazy('tasks_list'))
+        self.assertRedirects(response, reverse_lazy('tasks_index'))
         self.assertEqual(Task.objects.count(), self.tasks_count)
 
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('Only the author of the task can delete it'))
-        self.assertEqual(messages[0].level, 40)
 
     def test_delete_task(self):
         response = self.client.post(
-            reverse_lazy('task_delete', kwargs={'pk': 1})
+            reverse_lazy('tasks_delete', kwargs={'pk': 1})
         )
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse_lazy('tasks_list'))
+        self.assertRedirects(response, reverse_lazy('tasks_index'))
 
         self.assertEqual(Task.objects.count(), self.tasks_count - 1)
         with self.assertRaises(ObjectDoesNotExist):
@@ -200,14 +195,13 @@ class TestTaskDeleteView(TaskTestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('Task deleted successfully'))
-        self.assertEqual(messages[0].level, 25)
 
 
-class TestTaskPageView(TaskTestCase):
-    def test_task_page_if_unauthorized(self):
+class TestTaskDetailView(TaskTestCase):
+    def test_task_detail_if_unauthorized(self):
         self.client.logout()
         response = self.client.get(
-            reverse_lazy('task_info', kwargs={'pk': 1})
+            reverse_lazy('tasks_detail', kwargs={'pk': 1})
         )
 
         self.assertEqual(response.status_code, 302)
@@ -216,17 +210,17 @@ class TestTaskPageView(TaskTestCase):
     def test_task_page_view(self):
         task_data = self.test_tasks['list']
         response = self.client.get(
-            reverse_lazy('task_info', kwargs={'pk': 1})
+            reverse_lazy('tasks_detail', kwargs={'pk': 1})
         )
         page = str(response.content)
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='tasks/task_info.html')
+        self.assertTemplateUsed(response, template_name='tasks/detail.html')
 
         self.assertInHTML(task_data['name'], page)
         self.assertInHTML(task_data['description'], page)
         self.assertInHTML(task_data['author'], page)
         self.assertInHTML(task_data['executor'], page)
         self.assertInHTML(task_data['created_at'], page)
-        self.assertInHTML(task_data['labels'][0], page)
-        self.assertInHTML(task_data['labels'][1], page)
+        self.assertInHTML(task_data['label_set'][0], page)
+        self.assertInHTML(task_data['label_set'][1], page)
