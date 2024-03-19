@@ -28,7 +28,7 @@ class PermissionDeleteTaskRequired(UserPassesTestMixin):
         return creator_id == user_id
 
     def handle_no_permission(self):
-        message_txt = _("You haven't permission to delete this task!")
+        message_txt = _("Only the author of the task can delete it")
         messages.error(self.request, message_txt) # noqa
         return redirect('tasks_index')
 

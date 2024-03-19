@@ -37,7 +37,7 @@ class TaskCreateView(SuccessMessageMixin, LoginRequired,
     template_name = 'tasks/create.html'
     success_url = TASKS_INDEX
 
-    success_message = _('Task is created successfully!')
+    success_message = _('Task created successfully')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -52,7 +52,7 @@ class TaskUpdateView(SuccessMessageMixin, LoginRequired,
     template_name = 'tasks/update.html'
     success_url = TASKS_INDEX
 
-    success_message = _('Task is updated successfully!')
+    success_message = _('Task updated successfully')
 
 
 class TaskDeleteView(SuccessMessageMixin, LoginRequired,
@@ -62,4 +62,4 @@ class TaskDeleteView(SuccessMessageMixin, LoginRequired,
     template_name = 'tasks/delete.html'
     success_url = TASKS_INDEX
 
-    success_message = _('Task is deleted successfully!')
+    success_message = _('Task deleted successfully')

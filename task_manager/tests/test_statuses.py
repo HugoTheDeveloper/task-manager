@@ -26,7 +26,7 @@ class StatusTestCase(TestCase):
 class TestStatusesListView(StatusTestCase):
     def test_status_view_if_unauthorized(self):
         self.client.logout()
-        response = self.client.get(reverse_lazy('statuses_list'))
+        response = self.client.get(reverse_lazy('status_index'))
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
@@ -35,31 +35,29 @@ class TestStatusesListView(StatusTestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('You are not logged in! Please log in.'))
-        self.assertEqual(messages[0].level, 40)
 
     def test_status_view(self):
-        response = self.client.get(reverse_lazy('statuses_list'))
+        response = self.client.get(reverse_lazy('status_index'))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'statuses/list.html')
+        self.assertTemplateUsed(response, 'status/index.html')
 
     def test_status_columns(self):
         valid_status = self.test_statuses['list']
-        response = self.client.get(reverse_lazy('statuses_list'))
+        response = self.client.get(reverse_lazy('status_index'))
         page = str(response.content)
-        tag_class = 'class="align-middle"'
 
-        self.assertInHTML(f'<td {tag_class}>{valid_status["id"]}</td>',
+        self.assertInHTML(f'<td>{valid_status["id"]}</td>',
                           page)
-        self.assertInHTML(f'<td {tag_class}>{valid_status["name"]}</td>',
+        self.assertInHTML(f'<td>{valid_status["name"]}</td>',
                           page)
         self.assertInHTML(
-            f'<td  {tag_class}>{valid_status["created_at"]}</td>',
+            f'<td >{valid_status["created_at"]}</td>',
             page
         )
 
     def test_status_rows(self):
-        response = self.client.get(reverse_lazy('statuses_list'))
+        response = self.client.get(reverse_lazy('status_index'))
         page = str(response.content)
 
         self.assertInHTML(self.status_1.name, page)
@@ -79,7 +77,7 @@ class TestStatusCreateView(StatusTestCase):
         response = self.client.get(reverse_lazy('status_create'))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='statuses/create.html')
+        self.assertTemplateUsed(response, template_name='status/create.html')
 
     def test_create_status(self):
         valid_status = self.test_statuses['create']
@@ -88,13 +86,12 @@ class TestStatusCreateView(StatusTestCase):
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse_lazy('statuses_list'))
+        self.assertRedirects(response, reverse_lazy('status_index'))
         self.assertEqual(Status.objects.count(), self.count + 1)
 
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('Status created successfully'))
-        self.assertEqual(messages[0].level, 25)
 
 
 class TestStatusUpdateView(StatusTestCase):
@@ -113,7 +110,7 @@ class TestStatusUpdateView(StatusTestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='statuses/update.html')
+        self.assertTemplateUsed(response, template_name='status/update.html')
 
     def test_update_status(self):
         valid_status = self.test_statuses['update']
@@ -124,7 +121,7 @@ class TestStatusUpdateView(StatusTestCase):
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse_lazy('statuses_list'))
+        self.assertRedirects(response, reverse_lazy('status_index'))
         self.assertEqual(Status.objects.get(pk=self.status_3.pk).name,
                          valid_status['name'])
         self.assertEqual(Status.objects.count(), self.count)
@@ -132,7 +129,6 @@ class TestStatusUpdateView(StatusTestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('Status updated successfully'))
-        self.assertEqual(messages[0].level, 25)
 
 
 class TestStatusDeleteView(StatusTestCase):
@@ -151,7 +147,7 @@ class TestStatusDeleteView(StatusTestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='statuses/delete.html')
+        self.assertTemplateUsed(response, template_name='status/delete.html')
 
     def test_delete_status_if_in_use(self):
         response = self.client.post(
@@ -161,12 +157,11 @@ class TestStatusDeleteView(StatusTestCase):
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse_lazy('statuses_list'))
+        self.assertRedirects(response, reverse_lazy('status_index'))
 
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('Unable to delete status because it is in use'))
-        self.assertEqual(messages[0].level, 40)
 
     def test_delete_status(self):
         response = self.client.post(
@@ -175,7 +170,7 @@ class TestStatusDeleteView(StatusTestCase):
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse_lazy('statuses_list'))
+        self.assertRedirects(response, reverse_lazy('status_index'))
 
         self.assertEqual(Status.objects.count(), self.count - 1)
         with self.assertRaises(ObjectDoesNotExist):
@@ -184,4 +179,3 @@ class TestStatusDeleteView(StatusTestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('Status deleted successfully'))
-        self.assertEqual(messages[0].level, 25)

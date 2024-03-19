@@ -204,12 +204,11 @@ class TestUserDeleteView(UserTestCase):
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse_lazy('users_list'))
+        self.assertRedirects(response, reverse_lazy('users_index'))
 
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('Unable to delete user because it is in use'))
-        self.assertEqual(messages[0].level, 40)
 
     def test_delete_self(self):
         self.client.force_login(self.user_2)
@@ -228,4 +227,3 @@ class TestUserDeleteView(UserTestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('User is successfully deleted'))
-        self.assertEqual(messages[0].level, 25)

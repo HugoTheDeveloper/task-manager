@@ -25,7 +25,7 @@ class CreateStatusView(SuccessMessageMixin, LoginRequired,
     form_class = CreateStatusForm
     success_url = STATUS_INDEX
 
-    success_message = _('Status is created successfully!')
+    success_message = _('Status created successfully')
 
 
 class UpdateStatusView(SuccessMessageMixin, LoginRequired,
@@ -36,7 +36,7 @@ class UpdateStatusView(SuccessMessageMixin, LoginRequired,
     form_class = CreateStatusForm
     success_url = STATUS_INDEX
 
-    success_message = _("Status is updated successfully!")
+    success_message = _("Status updated successfully")
 
 
 class DeleteStatusView(SuccessMessageMixin, LoginRequired,
@@ -47,5 +47,5 @@ class DeleteStatusView(SuccessMessageMixin, LoginRequired,
     success_url = STATUS_INDEX
     reject_url = STATUS_INDEX
 
-    success_message = _("Status is deleted successfully!")
+    success_message = _("Status deleted successfully")
     reject_message = _('Unable to delete status because it is in use')

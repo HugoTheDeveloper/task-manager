@@ -207,7 +207,7 @@ class TestTaskDetailView(TaskTestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
 
-    def test_task_page_view(self):
+    def test_task_detail_view(self):
         task_data = self.test_tasks['list']
         response = self.client.get(
             reverse_lazy('tasks_detail', kwargs={'pk': 1})
