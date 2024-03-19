@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-18 18:12+0300\n"
+"POT-Creation-Date: 2024-03-19 10:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,37 +31,51 @@ msgstr "Имя"
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/labels/views.py:27
+#: task_manager/labels/views.py:28
 msgid "Label is created successfully!"
 msgstr "Метка создана успешно!"
 
-#: task_manager/labels/views.py:38
+#: task_manager/labels/views.py:39
 msgid "Label is updated successfully!"
 msgstr "Метка обновлена успешно!"
 
-#: task_manager/labels/views.py:48
+#: task_manager/labels/views.py:50
 msgid "Label is deleted successfully!"
 msgstr "Метка удалена успешно!"
 
+#: task_manager/labels/views.py:51 task_manager/tests/test_labels.py:171
+msgid "Unable to delete label because it is in use"
+msgstr ""
+
 #: task_manager/service_tools/filters.py:16
-#, fuzzy
-#| msgid "Only tasks for me"
 msgid "Own tasks only"
 msgstr "Только мои задачи"
 
-#: task_manager/service_tools/permissions.py:14
-msgid "You haven't permission to edit or delete this user!"
-msgstr "У вас нет прав для изменения или удаления этого пользователя!"
-
-#: task_manager/service_tools/permissions.py:28
-msgid "You haven't permission to delete this task!"
-msgstr "У вас нет прав для удаления этой задачи!"
-
-#: task_manager/statuses/models.py:14 task_manager/tasks/forms.py:14
-#: task_manager/templates/tasks/detail.html:26
+#: task_manager/service_tools/filters.py:28
+#: task_manager/statuses/models.py:14
+#: task_manager/tasks/forms.py:14 task_manager/templates/tasks/detail.html:26
 #: task_manager/templates/tasks/index.html:23
 msgid "Status"
 msgstr "Статус"
+
+#: task_manager/service_tools/filters.py:29
+#: task_manager/tasks/forms.py:15
+#: task_manager/templates/tasks/detail.html:22
+#: task_manager/templates/tasks/index.html:25
+msgid "Executor"
+msgstr "Исполнитель"
+
+#: task_manager/service_tools/permissions.py:16
+msgid "You haven't permission to edit or delete this user!"
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#: task_manager/service_tools/permissions.py:30
+msgid "You haven't permission to delete this task!"
+msgstr "У вас нет прав для удаления этой задачи!"
+
+#: task_manager/service_tools/permissions.py:36
+msgid "You are not authenticated! Log in, please."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
 #: task_manager/statuses/models.py:15
 #: task_manager/templates/components/navbar.html:6
@@ -69,26 +83,25 @@ msgstr "Статус"
 msgid "Statuses"
 msgstr "Статусы"
 
-#: task_manager/statuses/views.py:27
+#: task_manager/statuses/views.py:28
 msgid "Status is created successfully!"
 msgstr "Статус создан успешно!"
 
-#: task_manager/statuses/views.py:38
+#: task_manager/statuses/views.py:39
 msgid "Status is updated successfully!"
 msgstr "Статус обновлен успешно!"
 
-#: task_manager/statuses/views.py:48
+#: task_manager/statuses/views.py:50
 msgid "Status is deleted successfully!"
 msgstr "Статус удален успешно!"
+
+#: task_manager/statuses/views.py:51 task_manager/tests/test_statuses.py:168
+msgid "Unable to delete status because it is in use"
+msgstr ""
 
 #: task_manager/tasks/forms.py:13
 msgid "Description"
 msgstr "Описание"
-
-#: task_manager/tasks/forms.py:15 task_manager/templates/tasks/detail.html:22
-#: task_manager/templates/tasks/index.html:25
-msgid "Executor"
-msgstr "Исполнитель"
 
 #: task_manager/tasks/forms.py:16
 #: task_manager/templates/components/navbar.html:7
@@ -98,8 +111,6 @@ msgid "Labels"
 msgstr "Метки"
 
 #: task_manager/tasks/models.py:20
-#, fuzzy
-#| msgid "Tasks"
 msgid "Task"
 msgstr "Задачи"
 
@@ -331,10 +342,6 @@ msgstr "Метка создана успешно!"
 msgid "Label updated successfully"
 msgstr "Метка обновлена успешно!"
 
-#: task_manager/tests/test_labels.py:171
-msgid "Unable to delete label because it is in use"
-msgstr ""
-
 #: task_manager/tests/test_labels.py:189
 #, fuzzy
 #| msgid "Label is deleted successfully!"
@@ -352,10 +359,6 @@ msgstr "Статус создан успешно!"
 #| msgid "Status is updated successfully!"
 msgid "Status updated successfully"
 msgstr "Статус обновлен успешно!"
-
-#: task_manager/tests/test_statuses.py:168
-msgid "Unable to delete status because it is in use"
-msgstr ""
 
 #: task_manager/tests/test_statuses.py:186
 #, fuzzy
@@ -457,11 +460,11 @@ msgstr "Пользователь удален успешно!"
 
 #: task_manager/views.py:18
 msgid "You are logged in successfully!"
-msgstr "Вы вошли в систему успешно!"
+msgstr "Вы залогинены"
 
 #: task_manager/views.py:22
 msgid "You are logged out"
-msgstr "Вы вышли из системы"
+msgstr "Вы разлогинены"
 
 #~ msgid "Only my tasks"
 #~ msgstr "Только мои задачи"

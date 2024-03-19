@@ -24,7 +24,7 @@
             <tr>
                 <td>{{ label.pk }}</td>
                 <td>{{ label.name }}</td>
-                <td>{{ label.created_at }}</td>
+                <td>{{ label.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
                     <a href="{% url 'labels_update' label.pk %}">{% trans "Edit" %}</a>
                     <br>

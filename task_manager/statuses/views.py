@@ -3,21 +3,22 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from .forms import CreateStatusForm
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
+from task_manager.service_tools.permissions import (LoginRequired,
+                                                    DeletionRestricted)
 
 # Create your views here.
 STATUS_INDEX = reverse_lazy('status_index')
 
 
-class ListStatusView(LoginRequiredMixin, ListView):
+class ListStatusView(LoginRequired, ListView):
     model = Status
     context_object_name = 'statuses'
     template_name = 'status/index.html'
 
 
-class CreateStatusView(SuccessMessageMixin, LoginRequiredMixin,
+class CreateStatusView(SuccessMessageMixin, LoginRequired,
                        CreateView):
     model = Status
     template_name = 'status/create.html'
@@ -27,7 +28,7 @@ class CreateStatusView(SuccessMessageMixin, LoginRequiredMixin,
     success_message = _('Status is created successfully!')
 
 
-class UpdateStatusView(SuccessMessageMixin, LoginRequiredMixin,
+class UpdateStatusView(SuccessMessageMixin, LoginRequired,
                        UpdateView):
     model = Status
     context_object_name = 'status'
@@ -38,11 +39,13 @@ class UpdateStatusView(SuccessMessageMixin, LoginRequiredMixin,
     success_message = _("Status is updated successfully!")
 
 
-class DeleteStatusView(SuccessMessageMixin, LoginRequiredMixin,
-                       DeleteView):
+class DeleteStatusView(SuccessMessageMixin, LoginRequired,
+                       DeletionRestricted, DeleteView):
     model = Status
     context_object_name = 'status'
     template_name = 'status/delete.html'
     success_url = STATUS_INDEX
+    reject_url = STATUS_INDEX
 
     success_message = _("Status is deleted successfully!")
+    reject_message = _('Unable to delete status because it is in use')

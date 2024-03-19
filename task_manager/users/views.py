@@ -6,7 +6,7 @@ from django.views.generic.list import ListView
 from .forms import CreateUserForm
 from task_manager.service_tools.permissions import PermissionChangeUserRequired
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from task_manager.service_tools.permissions import LoginRequired
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 
@@ -49,7 +49,7 @@ class CreateUserView(SuccessMessageMixin, CreateView):
 
 
 class UpdateUserView(SuccessMessageMixin, PermissionChangeUserRequired,
-                     LoginRequiredMixin, UpdateView):
+                     LoginRequired, UpdateView):
     model = User
     context_object_name = 'user'
     form_class = CreateUserForm
@@ -60,7 +60,7 @@ class UpdateUserView(SuccessMessageMixin, PermissionChangeUserRequired,
 
 
 class DeleteUserView(SuccessMessageMixin, PermissionChangeUserRequired,
-                     LoginRequiredMixin, DeleteView):
+                     LoginRequired, DeleteView):
     model = User
     context_object_name = 'user'
     template_name = 'users/delete.html'

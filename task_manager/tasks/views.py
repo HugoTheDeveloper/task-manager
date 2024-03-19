@@ -6,7 +6,7 @@ from .forms import CreateTaskForm
 from task_manager.service_tools.filters import TaskFilter
 from django_filters.views import FilterView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from task_manager.service_tools.permissions import LoginRequired
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.service_tools.permissions import PermissionDeleteTaskRequired
@@ -16,7 +16,7 @@ from task_manager.service_tools.permissions import PermissionDeleteTaskRequired
 TASKS_INDEX = reverse_lazy('tasks_index')
 
 
-class TaskListView(LoginRequiredMixin, FilterView,
+class TaskListView(LoginRequired, FilterView,
                    ListView):
     model = Task
     template_name = 'tasks/index.html'
@@ -24,13 +24,13 @@ class TaskListView(LoginRequiredMixin, FilterView,
     filterset_class = TaskFilter
 
 
-class TaskDetailView(LoginRequiredMixin, DetailView):
+class TaskDetailView(LoginRequired, DetailView):
     model = Task
     template_name = 'tasks/detail.html'
     context_object_name = 'task'
 
 
-class TaskCreateView(SuccessMessageMixin, LoginRequiredMixin,
+class TaskCreateView(SuccessMessageMixin, LoginRequired,
                      CreateView):
     model = Task
     form_class = CreateTaskForm
@@ -44,7 +44,7 @@ class TaskCreateView(SuccessMessageMixin, LoginRequiredMixin,
         return super().form_valid(form)
 
 
-class TaskUpdateView(SuccessMessageMixin, LoginRequiredMixin,
+class TaskUpdateView(SuccessMessageMixin, LoginRequired,
                      UpdateView):
     model = Task
     form_class = CreateTaskForm
@@ -55,7 +55,7 @@ class TaskUpdateView(SuccessMessageMixin, LoginRequiredMixin,
     success_message = _('Task is updated successfully!')
 
 
-class TaskDeleteView(SuccessMessageMixin, LoginRequiredMixin,
+class TaskDeleteView(SuccessMessageMixin, LoginRequired,
                      PermissionDeleteTaskRequired, DeleteView):
     model = Task
     context_object_name = 'task'

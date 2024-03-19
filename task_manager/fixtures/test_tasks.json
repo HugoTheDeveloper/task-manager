@@ -20,6 +20,6 @@
     "executor": "Luke Skywalker",
     "status": "Finished",
     "created_at": "06.02.2024 21:47",
-    "labels": ["Important", "Not important"]
+    "label_set": ["Important", "Not important"]
   }
 }
