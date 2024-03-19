@@ -4,15 +4,15 @@
       "username": "Test_User",
       "first_name": "Test",
       "last_name": "User",
-      "password1": "qwerty",
-      "password2": "qwerty"
+      "password1": "robocop1234",
+      "password2": "robocop1234"
     },
     "invalid_username": {
       "username": "Test-&ser",
       "first_name": "Test",
       "last_name": "User",
-      "password1": "qwerty",
-      "password2": "qwerty"
+      "password1": "robocop1234",
+      "password2": "robocop1234"
     },
     "invalid_password": {
       "username": "Test_User",
@@ -25,8 +25,8 @@
       "username": "Test_User",
       "first_name": "Test",
       "last_name": "User",
-      "password1": "qwerty",
-      "password2": "qwer"
+      "password1": "robocop1234",
+      "password2": "robocop124"
     }
   },
   "update": {

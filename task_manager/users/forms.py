@@ -19,3 +19,10 @@ class CreateUserForm(UserCreationForm):
                           '150 characters. Only letters, numbers and '
                           '@/./+/-//_ symbols.')
         }
+        error_messages = {
+            'username': {
+                'invalid': _('Enter the correct user name. '
+                             'It can only contain letters, numbers '
+                             'and @/./+/-//_.')
+            }
+        }
