@@ -3,11 +3,10 @@
 
 {% block content %}
 <h1>{% trans 'Sign in' %}</h1>
-<form method="post" action="{% url 'login' %}">
+<form class="form" method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% trans 'Enter' as button_name %}
-    {% bootstrap_button button_type='submit' content=button_name %}
-    <input type="hidden" name="next" value="{{ next }}">
+    {% bootstrap_button button_type="submit" content=button_name %}
 </form>
 {% endblock %}

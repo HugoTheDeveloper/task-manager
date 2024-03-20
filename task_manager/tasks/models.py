@@ -11,7 +11,7 @@ class Task(models.Model):
     description = models.TextField(blank=True)
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     status = models.ForeignKey(Status, on_delete=models.PROTECT)
-    label_set = models.ManyToManyField(Label, through='Membership')
+    label_set = models.ManyToManyField(Label, through='Membership', blank=True)
     executor = models.ForeignKey(User, on_delete=models.PROTECT, null=True,
                                  blank=True, related_name='tasks_todo')
     created_at = models.DateTimeField(auto_now_add=True)

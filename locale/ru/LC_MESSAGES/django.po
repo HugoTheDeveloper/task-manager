@@ -333,7 +333,7 @@ msgstr "Изменить пользователя"
 
 #: task_manager/tests/test_users.py:79 task_manager/users/views.py:33
 msgid "User has been registered successfully"
-msgstr "Задача успешно создана"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/tests/test_users.py:83 task_manager/users/forms.py:24
 msgid ""
@@ -345,7 +345,7 @@ msgstr "Введите правильное имя пользователя. "
 #: task_manager/tests/test_users.py:99
 msgid ""
 "The password entered is too short. It must be at least 8 characters long."
-msgstr "Введенный пароль слишком короткий. Он должен содержать не менее 8 символов."
+msgstr "Введённый пароль слишком короткий. Он должен содержать как минимум 8 символов."
 
 #: task_manager/tests/test_users.py:113
 msgid "The two password fields didn’t match."
