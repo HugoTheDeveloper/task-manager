@@ -42,6 +42,9 @@ new_locales:
 compile-locales:
 	$(MANAGE) compilemessages
 
+create_superuser:
+	$(MANAGE) createsuperuser
+
 test-coverage:
 	poetry run coverage run --source='.' manage.py test task_manager
 	poetry run coverage report
