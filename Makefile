@@ -41,3 +41,7 @@ new_locales:
 
 compile-locales:
 	$(MANAGE) compilemessages
+
+test-coverage:
+	poetry run coverage run --source='.' manage.py test task_manager
+	poetry run coverage report
