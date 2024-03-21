@@ -1,7 +1,7 @@
 from django.db import models
-from task_manager.users.models import User
-from task_manager.statuses.models import Status
-from task_manager.labels.models import Label
+from task_manager.apps.users.models import User
+from task_manager.apps.statuses.models import Status
+from task_manager.apps.labels.models import Label
 from django.utils.translation import gettext_lazy as _
 
 

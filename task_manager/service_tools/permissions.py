@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from task_manager.tasks.models import Task
+from task_manager.apps.tasks.models import Task
 from django.contrib.auth.mixins import AccessMixin
 from django.db.models import ProtectedError
 

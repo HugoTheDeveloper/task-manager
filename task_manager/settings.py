@@ -49,10 +49,10 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'django_filters',
     'task_manager',
-    'task_manager.statuses',
-    'task_manager.labels',
-    'task_manager.tasks',
-    'task_manager.users',
+    'task_manager.apps.statuses',
+    'task_manager.apps.labels',
+    'task_manager.apps.tasks',
+    'task_manager.apps.users',
 
 ]
 

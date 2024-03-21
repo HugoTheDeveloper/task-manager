@@ -4,8 +4,8 @@ from django.test import TestCase, Client
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
-from task_manager.statuses.models import Status
-from task_manager.users.models import User
+from task_manager.apps.statuses.models import Status
+from django.contrib.auth.models import User
 from task_manager.service_tools.data_loader import from_json
 
 
