@@ -12,17 +12,11 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 USERS_INDEX = reverse_lazy('users_index')
 
+
 class IndexView(ListView):
     model = User
     template_name = 'users/index.html'
     context_object_name = 'users'
-
-# class IndexView(View):
-#     @staticmethod
-#     def get(request, *args, **kwargs):
-#         users = User.objects.all()
-#         return render(request, 'users/index.html',
-#                       {'users': users})
 
 
 class CreateUserView(SuccessMessageMixin, CreateView):
@@ -31,22 +25,6 @@ class CreateUserView(SuccessMessageMixin, CreateView):
     template_name = 'users/create.html'
     success_url = reverse_lazy('login')
     success_message = _('User has been registered successfully')
-
-
-# class CreateView(View):
-#
-#     @staticmethod
-#     def get(request, *args, **kwargs):
-#         form = CreateUserForm()
-#         return render(request, 'users/create.html', {'form': form})
-#
-#     @staticmethod
-#     def post(request, *args, **kwargs):
-#         form = CreateUserForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('users_index')
-#         return render(request, 'users/create.html', {'form': form})
 
 
 class UpdateUserView(SuccessMessageMixin, PermissionChangeUserRequired,

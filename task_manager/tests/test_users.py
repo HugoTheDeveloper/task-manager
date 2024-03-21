@@ -81,8 +81,8 @@ class TestUserCreateView(UserTestCase):
     def test_create_invalid_username(self):
         invalid_user = self.test_users['create']['invalid_username']
         error_substring = _('Enter the correct user name. '
-                             'It can only contain letters, numbers '
-                             'and @/./+/-//_.')
+                            'It can only contain letters, numbers '
+                            'and @/./+/-//_.')
         response = self.client.post(reverse_lazy('users_create'),
                                     data=invalid_user)
         errors = response.context['form'].errors
