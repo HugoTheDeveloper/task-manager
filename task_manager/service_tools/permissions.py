@@ -8,29 +8,34 @@ from django.contrib.auth.mixins import AccessMixin
 from django.db.models import ProtectedError
 
 
-class PermissionChangeUserRequired(UserPassesTestMixin):
+class NoPermissionMixin(UserPassesTestMixin):
+    message_txt = None
+    reject_url = None
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.message_txt) # noqa
+        return redirect(self.reject_url)
+
+
+class PermissionChangeUserRequired(NoPermissionMixin):
+    message_txt = _("You haven't permission to edit or delete this user!")
+    reject_url = reverse_lazy('users_index')
+
     def test_func(self):
         user_id_to_change = self.kwargs.get('pk') # noqa
         return self.request.user.pk == user_id_to_change # noqa
 
-    def handle_no_permission(self):
-        message_txt = _("You haven't permission to edit or delete this user!")
-        messages.error(self.request, message_txt) # noqa
-        return redirect('users_index')
 
+class PermissionDeleteTaskRequired(NoPermissionMixin):
+    message_txt = _("Only the author of the task can delete it")
+    reject_url = reverse_lazy('tasks_index')
 
-class PermissionDeleteTaskRequired(UserPassesTestMixin):
     def test_func(self):
         task_id = self.kwargs.get('pk') # noqa
         task = Task.objects.get(pk=task_id) # noqa
         creator_id = task.author.pk
         user_id = self.request.user.pk # noqa
         return creator_id == user_id
-
-    def handle_no_permission(self):
-        message_txt = _("Only the author of the task can delete it")
-        messages.error(self.request, message_txt) # noqa
-        return redirect('tasks_index')
 
 
 class LoginRequired(AccessMixin):
