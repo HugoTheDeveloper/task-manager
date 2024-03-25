@@ -17,13 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-import task_manager.views
+import task_manager.views as views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', task_manager.views.StartPageView.as_view(), name='start_page'),
-    path('login/', task_manager.views.CustomLoginView.as_view(), name='login'),
-    path('logout/', task_manager.views.CustomLogoutView.as_view(), name='logout'),
+    path("__debug__/", include("debug_toolbar.urls")),
+    path('', views.StartPageView.as_view(), name='start_page'),
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('login/', views.CustomLoginView.as_view(), name='login'),
+    path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('users/', include('task_manager.apps.users.urls')),
     path('labels/', include('task_manager.apps.labels.urls')),
     path('statuses/', include('task_manager.apps.statuses.urls')),

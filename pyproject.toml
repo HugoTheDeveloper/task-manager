@@ -23,6 +23,7 @@ rollbar = "^0.16.3"
 flake8 = "^7.0.0"
 ipython = "^8.22.1"
 coverage = "^7.4.4"
+django-debug-toolbar = "^4.3.0"
 
 [build-system]
 requires = ["poetry-core"]
