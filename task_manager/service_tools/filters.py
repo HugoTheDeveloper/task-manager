@@ -25,6 +25,4 @@ class TaskFilter(django_filters.FilterSet):
     class Meta:
         model = Task
         fields = ['status', 'executor']
-        filter_overrides = {
-            models.CharField: {'label': _('')}
-        }
+

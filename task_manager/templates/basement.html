@@ -22,7 +22,6 @@
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
         <span class="fs-4">{{ title_ }}</span>
       </a>
       </div>
@@ -37,20 +36,21 @@
 
     </div>
 
-  <footer class="border-top py-3 mt-5 flex-shrink-0">
-      <div class="container">
-    <ul class="nav justify-content-center pb-3 mb-3">
-      <li class="nav-item"><a href="https://ru.hexlet.io" class="nav-link px-2 text-body-secondary">Hexlet</a></li>
-      <li class="nav-item"><a href="https://github.com/HugoTheDeveloper/task-manager" class="nav-link px-2 text-body-secondary">Github</a></li>
-      <li class="nav-item"><a href="https://t.me/bigabaga" class="nav-link px-2 text-body-secondary">{% trans 'Want like this!' %} </a></li>
-        <li class="nav-item">
-        {% include 'components/language_selector.html' %}
-        </li>
+  <div class="container">
+  <footer class="border-top d-flex flex-wrap justify-content-between align-items-baseline py-2 my-2">
+        <div class="col-md-4 d-flex">
+            <ul class="nav pb-0 mb-0">
+              <li class="nav-item"><a href="https://github.com/HugoTheDeveloper/task-manager" class="nav-link px-2 text-body-secondary">{% trans 'Source code' %}</a></li>
+              <li class="nav-item"><a href="https://t.me/bigabaga" class="nav-link px-2 text-body-secondary">{% trans 'Want like this!' %} </a></li>
+                <li class="nav-item">
 
-    </ul>
+                </li>
+            </ul>
+        </div>
+            {% include 'components/language_selector.html' %}
 
-      </div>
   </footer>
+  </div>
 
 </body>
 </html>

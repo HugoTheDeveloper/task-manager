@@ -5,8 +5,8 @@
 
 <h1 class="my-4">{% trans 'Tasks' %}</h1>
 
-<a class="btn btn-primary btn-block" role="button" href="{% url 'tasks_create' %}">{% trans 'Create task' %}</a>
-<div class="text-start container border rounded p-2">
+<a class="btn btn-primary btn-block mb-4" role="button" href="{% url 'tasks_create' %}">{% trans 'Create task' %}</a>
+<div class="text-start container border rounded p-2 mb-4">
 	<form class="form m-0" action="" method="get">
 		{{ filter.form.as_p }}
 		<input type="submit" name="filter" value="{% translate 'Show' %}">
