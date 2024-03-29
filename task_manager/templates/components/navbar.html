@@ -9,7 +9,7 @@
     {% endif %}
 </ul>
 
-<div class="col-md-3 d-flex text-end ">
+<div class="col-md-3 d-flex justify-content-end">
     {% if authenticated %}
     <form action="/logout/" method="post">
         {% csrf_token %}

@@ -10,10 +10,12 @@ class Task(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True)
     author = models.ForeignKey(User, on_delete=models.PROTECT)
-    status = models.ForeignKey(Status, on_delete=models.PROTECT)
+    status = models.ForeignKey(Status, on_delete=models.PROTECT,
+                               verbose_name=_('Status'))
     label_set = models.ManyToManyField(Label, through='Membership', blank=True)
     executor = models.ForeignKey(User, on_delete=models.PROTECT, null=True,
-                                 blank=True, related_name='tasks_todo')
+                                 blank=True, related_name='tasks_todo',
+                                 verbose_name=_('Executor'))
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

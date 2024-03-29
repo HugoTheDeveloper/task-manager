@@ -2,7 +2,6 @@ import django_filters
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from django_filters import ModelChoiceFilter
-from django.db import models
 
 from task_manager.apps.labels.models import Label
 from task_manager.apps.tasks.models import Task
@@ -25,4 +24,3 @@ class TaskFilter(django_filters.FilterSet):
     class Meta:
         model = Task
         fields = ['status', 'executor']
-
