@@ -34,7 +34,7 @@ Create .env file in the root folder and add following variables:
 
     SECRET_KEY = '{your secret key}' // Django secret key
 
-If you want to use PostgreSQL:
+If you want to use PostgreSql:
     
     DATABASE_URL = postgresql://{provider}://{user}:{password}@{host}:{port}/{db}
 
