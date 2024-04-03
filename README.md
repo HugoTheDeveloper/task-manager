@@ -4,7 +4,7 @@
 ![Continuous integration](https://github.com/HugoTheDeveloper/task-manager/actions/workflows/continious-integration.yml/badge.svg)
 
 ### Showcase
-![](https://github.com/HugoTheDeveloper/python-project-83/tree/main/showcases/task-manager-showcase.gif)
+![](https://github.com/HugoTheDeveloper/task-manager/tree/main/showcases/task-manager-showcase.gif)
 
 #### [Check out in action](https://task-manager-s0wy.onrender.com)
 
